@@ -1,7 +1,7 @@
 #Importancion de las funciones para operar
 from funciones import sumar, restar, multiplicar, dividir
 
-#Diccionario con los nombre de las funciones
+#Diccionario con el nombre de las funciones
 operaciones = {
     "+": sumar,
     "-": restar,
@@ -11,15 +11,15 @@ operaciones = {
 def main():
     #Ciclo principal para hacer el recorrido y las validaciones necesarias
     while True:
-        # Solicita el primer numero
+        # solicita el primer numero
         while True:
             try:
-                numero1 = int(input("Digita tu primer numero: "))
+                numero1 = float(input("Digita tu primer numero: "))
                 break
             except ValueError:
                 print("Numero invalido")
 
-        #Solicita el operador al usuario
+        #solicita el operador al usuario
         while True:
             operador = input("Ingrese operador entre +, -, *, /: ")
             if operador not in operaciones:
@@ -27,10 +27,10 @@ def main():
             else:
                 break
 
-        # Solicita el segundo numero
+        # solicita el segundo numero
         while True:
             try:
-                numero2 = int(input("Digite tu segundo numero: "))
+                numero2 = float(input("Digite tu segundo numero: "))
                 break
             except ValueError:
                 print("Numero invalido")
@@ -41,8 +41,8 @@ def main():
         resultado = operaciones[operador](numero1, numero2)
         print(resultado)
 
-        #Y para finalizar hace la pregunta si desea salir ya que si lo escribe se termina de ejecutar el programa.
-        pregunta = input("Escribe salir para salir:").upper() == "salir"
+        #Y para finalizar hace la pregunta si desea salir, ya que si lo escribe se termina de ejecutar el programa.
+        pregunta = input("Escribe salir para salir:")
         if pregunta == "salir":
             break
 
