@@ -1,11 +1,25 @@
 import random
+import string
 
 class GenerarContrasena:
     def __init__(self):
         pass
 
     def constructor_contrasena(self):
-        pass
+        letras = string.ascii_letters  # Devuelve: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        numeros = string.digits  # Devuelve: '0123456789'
+        simbolos = string.punctuation  # Devuelve: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+
+
+        longitud = self.longitud_contra()
+        caracteres_posibles = letras + numeros + simbolos
+        password_final = ""
+
+        for i in range(longitud):
+            password_final += random.choice(caracteres_posibles)
+        print(f"Tu nueva contraseña segura es: {password_final}")
+
+
 
     def longitud_contra(self):
         while True:
@@ -17,9 +31,9 @@ class GenerarContrasena:
             if numero_caracteres < 8:
                 print("Su contraseña seria muy insegura")
             else:
-                break
+                return numero_caracteres
 
 prueba = GenerarContrasena()
-prueba.longitud_contra()
+prueba.constructor_contrasena()
 
 
