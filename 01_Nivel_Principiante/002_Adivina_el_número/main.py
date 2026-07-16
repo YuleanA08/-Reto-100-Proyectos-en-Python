@@ -33,5 +33,4 @@ class AdivinaNumero:
 
 
 mi_juego = AdivinaNumero()
-
 mi_juego.jugar_aleatorio()
