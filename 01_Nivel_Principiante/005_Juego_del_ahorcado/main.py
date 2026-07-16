@@ -4,17 +4,26 @@ class JuegoAhorcado:
     def __init__(self):
         self.vidas = 6
         self.palabras_posibles = ["PYTHON", "PROGRAMA", "COMPUTADORA", "TECLADO", "INTERNET"]
+        self.letras_intentadas = []
         self.palabra_secreta = random.choice(self.palabras_posibles)
         self.tablero = ["-"]*len(self.palabra_secreta)
 
     def mostrar_estado(self):
-        print(f"Vidas restantes: {self.vidas}")
-        print(f"Tablero: {self.tablero}")
+        print(f"\nVidas restantes: {self.vidas}")
+        print(f"Tablero:" + " ".join(self.tablero))
 
     def jugar(self):
         while self.vidas > 0 and "-" in self.tablero:
             self.mostrar_estado()
-            letra = str.upper(input("Palabra: "))
+            letra = input("Palabra: ").upper()
+
+            if letra in self.letras_intentadas:
+                print(f"¡Ya intentaste con esta letra: {letra}! Prueba otra")
+                continue
+
+            # 2. Si el código llega a esta línea, significa que la letra es NUEVA.
+            # Por lo tanto, debemos anotarla en nuestra libreta para recordarla.
+            self.letras_intentadas.append(letra)
 
             if letra in self.palabra_secreta:
                 print("Adivinaste una letra")
@@ -32,5 +41,14 @@ class JuegoAhorcado:
         else:
             print(f"¡Felicidades! Adivinaste la palabra: {self.palabra_secreta}")
 
-mi_juego = JuegoAhorcado()
-mi_juego.jugar()
+
+while True:
+    print("\n--- ¡BIENVENIDO AL JUEGO DEL AHORCADO! ---")
+
+    mi_juego = JuegoAhorcado()
+    mi_juego.jugar()
+
+    respuesta = input("\n¿Deseas jugar de nuevo? (s/n): ").strip().lower()
+    if respuesta != 's':
+        print("¡Gracias por jugar! Hasta luego.")
+        break  # Rompemos el bucle infinito y el programa termina.
