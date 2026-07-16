@@ -8,7 +8,6 @@ class JuegoAhorcado:
         self.tablero = ["-"]*len(self.palabra_secreta)
 
     def mostrar_estado(self):
-        # Este método solo debe imprimir cuántas vidas te quedan y cómo se ve el tablero.
         print(f"Vidas restantes: {self.vidas}")
         print(f"Tablero: {self.tablero}")
 
@@ -35,5 +34,3 @@ class JuegoAhorcado:
 
 mi_juego = JuegoAhorcado()
 mi_juego.jugar()
-
-
